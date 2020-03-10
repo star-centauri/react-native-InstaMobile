@@ -6,9 +6,9 @@
  * @flow
  */
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Fragment } from 'react';
 import {
-  FlatList
+  FlatList, StatusBar
 } from 'react-native';
 
 import Post from './src/components/Post';
@@ -22,20 +22,26 @@ const App: () => React$Node = () => {
   }, [])
 
   return (
-    <FlatList 
-      keyExtractor = {item => String(item.id)}
-      data = {photos}
-      renderItem = { ({item}) => 
-      <Post 
-        nomeUsuario={item.userName} 
-        imgUser={item.userURL} 
-        imgPost={item.url}
-        description={item.description}
-        countLike={item.likes}
-        comments={item.comentarios}
+    <Fragment>
+      <StatusBar
+        backgroundColor="white"
+        barStyle="dark-content"
       />
-      }
-    />
+      <FlatList 
+        keyExtractor = {item => String(item.id)}
+        data = {photos}
+        renderItem = { ({item}) => 
+        <Post 
+          nomeUsuario={item.userName} 
+          imgUser={item.userURL} 
+          imgPost={item.url}
+          description={item.description}
+          countLike={item.likes}
+          comments={item.comentarios}
+        />
+        }
+      />
+    </Fragment>
   );
 };
 
