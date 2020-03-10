@@ -32,6 +32,7 @@ const App: () => React$Node = () => {
         imgPost={item.url}
         description={item.description}
         countLike={item.likes}
+        comments={item.comentarios}
       />
       }
     />
